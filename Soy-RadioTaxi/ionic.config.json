@@ -1,0 +1,7 @@
+{
+  "name": "Soy-RadioTaxi",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

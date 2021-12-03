@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    
+    <ion-title>
+      Chat
+    </ion-title>
+
+
+    <ion-buttons slot='end'>
+      <ion-button>
+        <ion-select placeholder="Disco" (ionChange)='onChangeDisco($event)'>
+          <ion-select-option *ngFor="let disco of discos" [value]="disco">{{disco }}</ion-select-option>
+        </ion-select>
+        <!-- <ion-icon name="car-outline"></ion-icon> -->
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="container">
+    <div *ngFor="let msg of messages" class="message left">
+      <img class="user-img"  alt="" src="../../../assets/images/support.webp">
+      <div class="msg-detail">
+        <div class="msg-info">
+          <p>
+            {{ msg }}
+          </p>
+        </div>
+        <div class="msg-content">
+          <span class="triangle"></span>
+          <p class="line-breaker "></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+

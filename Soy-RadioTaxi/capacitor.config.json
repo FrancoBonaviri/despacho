@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "Soy-RadioTaxi",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

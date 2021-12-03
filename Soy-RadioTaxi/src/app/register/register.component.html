@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Registrate
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide>
+      <ion-card>
+        <ion-item>
+          <ion-label>{{ id }}</ion-label>
+          <ion-icon name="share-social-outline" (click)="share()"></ion-icon>
+        </ion-item>
+      
+        <ion-card-content>
+          Comparti este codigo con soporte para dar de alta tu dispositivo.
+        </ion-card-content>
+      </ion-card>    
+    </ion-slide>
+  </ion-slides>
+</ion-content>
+
+
