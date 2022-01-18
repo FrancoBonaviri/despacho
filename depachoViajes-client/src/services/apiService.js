@@ -251,6 +251,15 @@ class ApiService {
     }
 
 
+    uploadFileChofer = async ( file, id) => {
+        const formData = new FormData()
+        formData.append('file', file);
+        const res = await axios.put(this.URL + '/chofer/uploadDoc/' + id, formData);
+        if( !res.data.ok ) {
+            throw new Error(res.data.msg)
+        }
+        return res;
+    }
 
 
 }

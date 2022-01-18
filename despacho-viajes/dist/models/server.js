@@ -8,6 +8,7 @@ var mongoose_1 = __importDefault(require("mongoose"));
 var body_parser_1 = __importDefault(require("body-parser"));
 var routes_1 = __importDefault(require("../routes"));
 var cors_1 = __importDefault(require("cors"));
+var express_fileupload_1 = __importDefault(require("express-fileupload"));
 var createServer = require("http").createServer;
 var Server = require("socket.io").Server;
 require('dotenv').config();
@@ -56,6 +57,7 @@ var MyServer = /** @class */ (function () {
     return MyServer;
 }());
 var app = (0, express_1.default)();
+app.use((0, express_fileupload_1.default)());
 var server = new MyServer(app, 4500);
 var httpServer = createServer(server.app);
 var io = new Server(httpServer, {

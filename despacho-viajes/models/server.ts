@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import routes from '../routes';
 import cors from 'cors'
+import fileUpload from 'express-fileupload';
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 require('dotenv').config()
@@ -75,6 +76,7 @@ class MyServer {
 
 
 let app = express();
+app.use( fileUpload() );
 const server = new MyServer(app, 4500);
 const httpServer = createServer(server.app);
 const io = new Server(httpServer, {  

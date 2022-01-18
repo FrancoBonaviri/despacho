@@ -38,6 +38,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var Chofer_1 = require("../models/Chofer");
 var viaje_1 = require("../models/viaje");
+var path = require('path');
 var choferController = /** @class */ (function () {
     function choferController() {
     }
@@ -162,6 +163,32 @@ var choferController = /** @class */ (function () {
                         })];
                 case 4: return [2 /*return*/];
             }
+        });
+    }); };
+    choferController.uploadDoc = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+        var files, id;
+        return __generator(_a, function (_b) {
+            files = req.files;
+            id = req.params.id;
+            if (!(files === null || files === void 0 ? void 0 : files.file)) {
+                return [2 /*return*/, res.json({
+                        ok: false,
+                        err: 'debe enviar un archivo con el nombre de "file" '
+                    })];
+            }
+            try {
+                files.file.mv(path.join(__dirname + '/../assets/choferesdoc/' + id + '.' + files.file.name.split('.')[1]));
+                return [2 /*return*/, res.json({
+                        ok: true,
+                    })];
+            }
+            catch (error) {
+                return [2 /*return*/, res.json({
+                        ok: false,
+                        err: error.message
+                    })];
+            }
+            return [2 /*return*/];
         });
     }); };
     choferController.isValidDispo = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {

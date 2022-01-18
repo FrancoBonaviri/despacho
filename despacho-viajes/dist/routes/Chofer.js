@@ -19,4 +19,5 @@ choferRouter.post('/', [
 ], ChoferController_1.default.create);
 choferRouter.delete('/:id', [], ChoferController_1.default.delete);
 choferRouter.put('/:id', [], ChoferController_1.default.update);
+choferRouter.put('/uploadDoc/:id', [], ChoferController_1.default.uploadDoc);
 exports.default = choferRouter;

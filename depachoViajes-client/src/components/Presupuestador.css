@@ -1,0 +1,33 @@
+.App {
+    text-align: center;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  #map{
+    height: 72vh; 
+    width: 98%;
+    position: relative !important;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px !important;
+    /* margin-bottom: 0 !important;s */
+  }
+  
+  .container {
+    margin-bottom: 3vh;
+    /* padding: 1rem */
+  }
+  
+  
+  .row{
+    margin: 1rem;
+  }
+  
+  .ui.input.form-control {
+    width: 100%;
+  }
+  
+  .ui.search.selection.dropdown {
+    width: 100%;
+  }

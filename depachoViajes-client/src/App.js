@@ -41,7 +41,7 @@ export default function App() {
 
   const onPress = useCallback(document.body.onkeydown = (e) => {
 
-    if( e.key == 'F2' && !modalNewViaje ) { 
+    if( e.key == 'F5' && !modalNewViaje ) { 
       dispatch( OpenModalViaje() )
       return;
     }

@@ -33,7 +33,7 @@ export const Appbar = () => {
 
 
                 <Typography variant="h7" component="div" style={{ paddingRight: '15px' }}>
-                    <Link style={{ textDecoration: 'none', color: 'white'}} to='/'>Nuevo Viaje(F2) </Link> 
+                    <Link style={{ textDecoration: 'none', color: 'white'}} to='/'>Nuevo Viaje(F5) </Link> 
                 </Typography>
                 <Typography variant="h7" component="div" style={{ paddingRight: '15px' }} >
                     <Link style={{ textDecoration: 'none', color: 'white'}} to='/'>Nuevo Disco(F3) </Link> 
@@ -45,18 +45,13 @@ export const Appbar = () => {
                     <Link style={{ textDecoration: 'none', color: 'white'}} to='/'>Nuevo Cliente(F6) </Link> 
                 </Typography>
 
-                <Typography variant="h7" component="div" style={{ paddingRight: '15px' }} >
-                    <Link style={{ textDecoration: 'none', color: 'white'}} to='/discos'> Discos </Link> 
+                <Typography variant="h7" component="div" style={{ paddingRight: '15px' }}>
+                    <Link style={{ textDecoration: 'none', color: 'white'}} to='/Archivo'> Archivo </Link> 
                 </Typography>
                 <Typography variant="h7" component="div" style={{ paddingRight: '15px' }}>
-                    <Link style={{ textDecoration: 'none', color: 'white'}} to='/choferes'> Choferes </Link> 
+                    <Link style={{ textDecoration: 'none', color: 'white'}} to='/presupuestador'> Presupuestador </Link> 
                 </Typography>
-                <Typography variant="h7" component="div" style={{ paddingRight: '15px' }}>
-                    <Link style={{ textDecoration: 'none', color: 'white'}} to='/clientes'> Clientes </Link> 
-                </Typography>
-                <Typography variant="h7" component="div" style={{ paddingRight: '15px' }}>
-                    <Link style={{ textDecoration: 'none', color: 'white'}} to='/viajes'> Viajes </Link> 
-                </Typography>
+
                 <Typography variant="h7" component="div" style={{ paddingRight: '15px' }}>
                     <Link style={{ textDecoration: 'none', color: 'white'}} to='/'> Configuracion </Link> 
                 </Typography>

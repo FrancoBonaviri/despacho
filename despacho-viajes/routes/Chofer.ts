@@ -23,6 +23,8 @@ choferRouter.delete('/:id', [], choferController.delete );
 
 choferRouter.put('/:id', [], choferController.update );
 
+choferRouter.put('/uploadDoc/:id', [], choferController.uploadDoc );
+
 
 
 

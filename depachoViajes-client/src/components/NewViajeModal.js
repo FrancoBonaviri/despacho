@@ -488,7 +488,7 @@ export function NewViajeModal() {
                 <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center'}} >
                   <FormControl component="fieldset">
                     <FormLabel component="legend">Pedido Por</FormLabel>
-                    <RadioGroup row aria-label="Pedido Por" name="pedidoPor" onChange={ handleChange } value={ formValues.pedidoPor }>
+                    <RadioGroup row aria-label="Pedido Por" name="pedidoPor" onChange={ handleChange } value={ formValues.pedidoPor } sx={{ color: 'white'}}>
                       <FormControlLabel value="whatsapp" control={<Radio />} label="WhastApp" />
                       <FormControlLabel value="tel" control={<Radio />} label="Telefono" />
                     </RadioGroup>

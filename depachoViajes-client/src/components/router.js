@@ -3,11 +3,13 @@ import {
     Routes,
     Route,
   } from "react-router-dom";
+import { Archivo } from './Archivo';
 import { HomePage } from './HomePage';
 import { ListadoChoferesPage } from './ListadoChoferesPage';
 import { ListadoClientesPage } from './ListadoClientesPage';
 import { ListadoDiscosPage } from './ListadoDiscosPage';
 import { ListadoViajesHistoricos } from './ListadoViajesHistoricos';
+import Presupuestador from './Presupuestador';
 
 
 export const Router = () => {
@@ -18,6 +20,8 @@ export const Router = () => {
           <Route exact path="/choferes" element={ <ListadoChoferesPage />} />
           <Route exact path="/clientes" element={ <ListadoClientesPage />} />
           <Route exact path="/viajes" element={ <ListadoViajesHistoricos />} />
+          <Route exact path="/Archivo" element={ <Archivo />} />
+          <Route exact path="/presupuestador" element={ <Presupuestador />} />
         </Routes>
     )
 }

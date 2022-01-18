@@ -48,6 +48,8 @@ export const NewChoferModal = () => {
     DispoId: ''
   });
 
+  const [file, setFile] = useState(null);
+
 
 
   const handleChange = ({ target }) => {
@@ -72,6 +74,7 @@ export const NewChoferModal = () => {
         apiService.nuevoChofer(formValues.nombre, formValues.telefono, formValues.discos, formValues.DispoId)
         .then( res => {
             console.log(res);
+            apiService.uploadFileChofer(file, res.data.Chofer._id);
             dispatch( CloseModalChofer() );
         })
         .catch( err => {
@@ -145,6 +148,20 @@ export const NewChoferModal = () => {
                         value={ formValues.DispoId }
                         onChange={ (e) => handleChange(e) }
                       />
+                </Grid>
+                
+                <Grid item xs={12} sx={{ display: 'flex', color: 'white'}} >
+                  <span style={{ marginRight: '1rem'}}> Documentacion:  </span>
+                    <input
+                        required
+                        id="documentacion"
+                        label="Documentacion"
+                        variant="filled"
+                        tabIndex="1"
+                        name='documentacion'
+                        type='file'
+                        onChange={(e) => setFile(e.target.files[0])}
+                    />
                 </Grid>
 
                   <Grid container spacing={2}  item xs={12}>

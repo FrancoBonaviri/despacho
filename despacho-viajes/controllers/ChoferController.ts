@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { Chofer } from '../models/Chofer';
 import { Viaje } from '../models/viaje';
-
+const path = require('path');
 
 class choferController {
 
@@ -115,6 +115,37 @@ class choferController {
 
 
     } 
+
+    static uploadDoc = async ( req: Request, res: Response ) => {
+        const files = req.files;
+        const id = req.params.id;
+
+        if( !(files?.file) ) {
+            return res.json({
+                ok: false,
+                err:'debe enviar un archivo con el nombre de "file" '
+            });
+        }
+
+
+        try {
+            
+            files.file.mv(path.join(__dirname + '/../assets/choferesdoc/' + id +'.'+ files.file.name.split('.')[1]));
+
+            return res.json({
+                ok: true,
+            });
+
+        } catch (error: any) {
+            
+            return res.json({
+                ok: false,
+                err: error.message
+            });
+        }
+        
+    }
+
 
     static isValidDispo = async (req: Request, res: Response ) => {
         try {
