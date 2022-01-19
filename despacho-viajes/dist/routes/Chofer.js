@@ -11,6 +11,7 @@ var choferRouter = (0, express_1.Router)();
 choferRouter.get('/', [], ChoferController_1.default.getAll);
 choferRouter.get('/dispo/:dispo', [], ChoferController_1.default.isValidDispo);
 choferRouter.get('/msg/:disco', [], ChoferController_1.default.getPrevMessages);
+choferRouter.get('/doc/:id', [], ChoferController_1.default.getDoc);
 choferRouter.post('/', [
     (0, express_validator_1.body)('Nombre', 'Debe indicar el nombre del chofer').notEmpty(),
     (0, express_validator_1.body)('Telefono', 'Debe indicar el telefono del chofer').notEmpty(),

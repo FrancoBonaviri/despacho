@@ -8,6 +8,7 @@ import { Router } from './components/router';
 import { useDispatch, useSelector } from 'react-redux'
 import { OpenModalChofer, OpenModalCliente, OpenModalDisco, OpenModalViaje, UpdateTables } from './actions/ui';
 import { NewClienteModal } from './components/NewClienteModal';
+import Calculadora from './components/Calculadora';
 
 
 export default function App() {
@@ -41,7 +42,7 @@ export default function App() {
 
   const onPress = useCallback(document.body.onkeydown = (e) => {
 
-    if( e.key == 'F5' && !modalNewViaje ) { 
+    if( e.key == 'F2' && !modalNewViaje ) { 
       dispatch( OpenModalViaje() )
       return;
     }
@@ -72,6 +73,7 @@ export default function App() {
       <NewDiscoModal />
       <NewChoferModal />
       <NewClienteModal />
+      <Calculadora />
     </ThemeProvider>
   );
 }

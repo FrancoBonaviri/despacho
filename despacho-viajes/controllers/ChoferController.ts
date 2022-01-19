@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { Chofer } from '../models/Chofer';
 import { Viaje } from '../models/viaje';
 const path = require('path');
+import fs from 'fs';
 
 class choferController {
 
@@ -130,7 +131,13 @@ class choferController {
 
         try {
             
-            files.file.mv(path.join(__dirname + '/../assets/choferesdoc/' + id +'.'+ files.file.name.split('.')[1]));
+            const dir =  path.join(__dirname + '/../assets/choferesdoc/' + id);
+
+            if( !fs.existsSync(dir) ) {
+                fs.mkdirSync(dir)
+            }
+
+            files.file.mv(path.join(__dirname + '/../assets/choferesdoc/' + id + '/'  +  files.file.name));
 
             return res.json({
                 ok: true,
@@ -146,6 +153,23 @@ class choferController {
         
     }
 
+    static getDoc = async ( req: Request, res: Response ) => {
+        const id = req.params.id;
+
+        const fullpath  = path.join(__dirname + '/../assets/choferesdoc/' + id);
+
+
+        
+        return fs.readdir(fullpath, ( err, items ) => {
+            if( err ) {
+                return res.sendFile(path.join(__dirname, '../assets/choferesdoc/', 'No-Image-Found.png')); 
+            }
+
+            console.log(path.join(fullpath, items[0]))
+            return res.sendFile(path.join(fullpath, items[0]))
+        })
+
+    }
 
     static isValidDispo = async (req: Request, res: Response ) => {
         try {

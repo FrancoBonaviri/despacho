@@ -4,6 +4,7 @@ import {
     Route,
   } from "react-router-dom";
 import { Archivo } from './Archivo';
+import { Chat } from './Chat';
 import { HomePage } from './HomePage';
 import { ListadoChoferesPage } from './ListadoChoferesPage';
 import { ListadoClientesPage } from './ListadoClientesPage';
@@ -22,6 +23,7 @@ export const Router = () => {
           <Route exact path="/viajes" element={ <ListadoViajesHistoricos />} />
           <Route exact path="/Archivo" element={ <Archivo />} />
           <Route exact path="/presupuestador" element={ <Presupuestador />} />
+          <Route exact path="/chat" element={ <Chat />} />
         </Routes>
     )
 }

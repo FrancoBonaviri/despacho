@@ -205,6 +205,7 @@ export function NewViajeModal() {
         ...formValues,
         entreCalle: `${primeraEntreCalle} y ${ primeraEntreCalle + 1 }`
       })
+      return;
     } 
 
     // paralelas a la montevideo 
@@ -232,7 +233,7 @@ export function NewViajeModal() {
         })
       }
 
-
+      return;
     }
 
   }
@@ -264,7 +265,7 @@ export function NewViajeModal() {
           dispatch( UpdateTables() )
         })
         .catch( err => {
-          Swal.fire('Error', err.message, 'error')
+          Swal.fire('Error', err.err, 'error')
         })
         .finally( () => {
           dispatch( CloseModalViaje() )

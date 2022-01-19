@@ -12,6 +12,8 @@ choferRouter.get('/dispo/:dispo', [], choferController.isValidDispo );
 
 choferRouter.get('/msg/:disco', [], choferController.getPrevMessages );
 
+choferRouter.get('/doc/:id', [], choferController.getDoc );
+
 choferRouter.post('/', [
     body('Nombre', 'Debe indicar el nombre del chofer').notEmpty(),
     body('Telefono', 'Debe indicar el telefono del chofer').notEmpty(),

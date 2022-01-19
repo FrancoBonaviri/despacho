@@ -37,6 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var Cliente_1 = require("../models/Cliente");
+var Disco_1 = require("../models/Disco");
 var viaje_1 = require("../models/viaje");
 var SocketService_1 = require("../services/SocketService");
 var viajeController = /** @class */ (function () {
@@ -218,9 +219,17 @@ var viajeController = /** @class */ (function () {
                     };
                     _b.label = 1;
                 case 1:
-                    _b.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, viaje_1.Viaje.findByIdAndUpdate(id, body, { new: true })];
+                    _b.trys.push([1, 4, , 5]);
+                    return [4 /*yield*/, Disco_1.Disco.exists({ Numero: disco })];
                 case 2:
+                    if (!(_b.sent())) {
+                        return [2 /*return*/, res.json({
+                                ok: false,
+                                err: "El Numero de disco no existe"
+                            })];
+                    }
+                    return [4 /*yield*/, viaje_1.Viaje.findByIdAndUpdate(id, body, { new: true })];
+                case 3:
                     viajeDb = _b.sent();
                     if (!viajeDb) {
                         throw new Error("No se encontro el viaje.");
@@ -231,13 +240,13 @@ var viajeController = /** @class */ (function () {
                             ok: true,
                             Viaje: viajeDb
                         })];
-                case 3:
+                case 4:
                     error_5 = _b.sent();
                     return [2 /*return*/, res.json({
                             ok: false,
                             err: error_5.message
                         })];
-                case 4: return [2 /*return*/];
+                case 5: return [2 /*return*/];
             }
         });
     }); };

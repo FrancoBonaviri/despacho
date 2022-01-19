@@ -38,3 +38,14 @@ export const CloseModalDisco = ()  => ({
 export const UpdateTables = ()  => ({
     type: types.UpdateTables
 })
+
+
+
+export const OpenModalCalculadora = ()  => ({
+    type: types.OpenModalCalculadora
+})
+
+
+export const CloseModalCalculadora = ()  => ({
+    type: types.CloseModalCalculadora
+})

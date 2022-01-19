@@ -35,10 +35,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var Chofer_1 = require("../models/Chofer");
 var viaje_1 = require("../models/viaje");
 var path = require('path');
+var fs_1 = __importDefault(require("fs"));
 var choferController = /** @class */ (function () {
     function choferController() {
     }
@@ -166,7 +170,7 @@ var choferController = /** @class */ (function () {
         });
     }); };
     choferController.uploadDoc = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-        var files, id;
+        var files, id, dir;
         return __generator(_a, function (_b) {
             files = req.files;
             id = req.params.id;
@@ -177,7 +181,11 @@ var choferController = /** @class */ (function () {
                     })];
             }
             try {
-                files.file.mv(path.join(__dirname + '/../assets/choferesdoc/' + id + '.' + files.file.name.split('.')[1]));
+                dir = path.join(__dirname + '/../assets/choferesdoc/' + id);
+                if (!fs_1.default.existsSync(dir)) {
+                    fs_1.default.mkdirSync(dir);
+                }
+                files.file.mv(path.join(__dirname + '/../assets/choferesdoc/' + id + '/' + files.file.name));
                 return [2 /*return*/, res.json({
                         ok: true,
                     })];
@@ -189,6 +197,20 @@ var choferController = /** @class */ (function () {
                     })];
             }
             return [2 /*return*/];
+        });
+    }); };
+    choferController.getDoc = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+        var id, fullpath;
+        return __generator(_a, function (_b) {
+            id = req.params.id;
+            fullpath = path.join(__dirname + '/../assets/choferesdoc/' + id);
+            return [2 /*return*/, fs_1.default.readdir(fullpath, function (err, items) {
+                    if (err) {
+                        return res.sendFile(path.join(__dirname, '../assets/choferesdoc/', 'No-Image-Found.png'));
+                    }
+                    console.log(path.join(fullpath, items[0]));
+                    return res.sendFile(path.join(fullpath, items[0]));
+                })];
         });
     }); };
     choferController.isValidDispo = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {

@@ -120,7 +120,7 @@ const ItemListViaje = ({ viaje }) => {
           dispatch( UpdateTables() )
         })
         .catch( err => {
-          Swal.fire('Error', err.message, 'error')
+          Swal.fire('Error', err.toString(), 'error')
         })
       }
     })

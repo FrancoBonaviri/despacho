@@ -195,7 +195,7 @@ class ApiService {
     confirmViaje = async (NumeroDisco, ViajeId) => {
         const res = await axios.put(this.URL+ '/Viaje/?disco=' + NumeroDisco + '&id=' + ViajeId)
         if( !res.data.ok ) {
-            throw new Error(res.data.msg)
+            throw new Error(res.data.err)
         }
         return res;
     }
@@ -260,6 +260,17 @@ class ApiService {
         }
         return res;
     }
+
+
+    getPrevMessages = async ( disco ) => {
+        const res = await axios.get(this.URL + '/chofer/msg/' + disco);
+        if( !res.data.ok ) {
+            throw new Error(res.data.msg)
+        }
+        return res;
+    }
+
+
 
 
 }

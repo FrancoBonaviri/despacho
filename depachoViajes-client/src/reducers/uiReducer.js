@@ -5,6 +5,7 @@ const initialState = {
     modalNewViaje: false,
     modalNewDisco: false,
     modalNewCliente: false,
+    modalCalculadora: false,
     updateTables: false,
 }
 
@@ -32,12 +33,17 @@ export const uiReducer = ( state = initialState, action ) => {
                 ...state,
                modalNewDisco: true
             }
+        case types.OpenModalCalculadora : 
+        return {
+            ...state,
+            modalCalculadora: true
+        }
 
-            case types.CloseModalChofer : 
-            return {
-                ...state,
-                modalNewChofer: false,
-            }
+        case types.CloseModalChofer : 
+        return {
+            ...state,
+            modalNewChofer: false,
+        }
         case types.CloseModalCliente : 
             return {
                 ...state,
@@ -53,6 +59,11 @@ export const uiReducer = ( state = initialState, action ) => {
                 ...state,
                modalNewDisco: false
             }
+        case types.CloseModalCalculadora : 
+        return {
+            ...state,
+            modalCalculadora: false
+        }
         case types.UpdateTables : 
         return {
             ...state,

@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { Cliente } from '../models/Cliente';
+import { Disco } from '../models/Disco';
 import { estadoViaje, Viaje } from '../models/viaje';
 import { SocketService } from '../services/SocketService';
 
@@ -175,6 +176,12 @@ class viajeController {
 
         try {
             
+            if( ! (await Disco.exists({ Numero: disco })) ) {
+                return res.json({
+                    ok: false,
+                    err: "El Numero de disco no existe"
+                });
+            }
 
             const viajeDb = await Viaje.findByIdAndUpdate(id, body, {new : true } );
 

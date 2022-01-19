@@ -36,6 +36,8 @@ export const ListadoChoferesPage = () => {
                         <TableCell align="right">Dispositivo</TableCell>
                         <TableCell align="right">Telefono</TableCell>
                         <TableCell align="right">Discos</TableCell>
+                        <TableCell align="right">Documentos</TableCell>
+                        <TableCell align="right">Chat</TableCell>
                     </TableRow>
                     </TableHead>
                     <TableBody>
@@ -60,6 +62,19 @@ const ItemListChofer = ( {chofer} ) => {
         dispatch( OpenModalChofer() );   
     }
 
+    const handleOpenChat = () => {
+        window.open('/chat?disco=' + chofer.NumeroDiscos[0], 'resizable=no', 'width=350, height=500');
+    }
+
+    const handleDownload = () => {
+        const link = document.createElement('a');
+        link.href = apiService.URL + '/chofer/doc/' + chofer._id;
+        link.setAttribute('target', '_blank');
+        document.body.appendChild(link);
+        link.click();
+    }
+
+
     return (
         <TableRow
         key={chofer._id}
@@ -71,6 +86,9 @@ const ItemListChofer = ( {chofer} ) => {
         <TableCell align="right">{chofer.DispoId}</TableCell>
         <TableCell align="right">{chofer.Telefono}</TableCell>
         <TableCell align="right">{chofer.NumeroDiscos.join()}</TableCell>
+        <TableCell align="right" onClick={ handleDownload }>Descargar</TableCell>
+        <TableCell align="right" onClick={ handleOpenChat } sx={{ cursor: 'pointer' }}>Chat</TableCell>
+
         </TableRow>
     )
 
