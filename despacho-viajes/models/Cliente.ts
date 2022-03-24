@@ -14,7 +14,23 @@ const clienteSchema = new Schema({
     NumeroTelefono: {
         type: String,
         required: [true]
-    }
+    },
+    Localidad: {
+        type: String,
+        required: [true]
+    },
+    Calle: {
+        type: String,
+        required: [true]
+    },
+    Numero: {
+        type: String,
+        required: [true]
+    },
+    EntreCalle: {
+        type: String,
+        required: [true]
+    },
 
 });
 
@@ -29,6 +45,10 @@ interface ICliente extends Document {
     Nombre: string;
     Codigo: string;
     NumeroTelefono: string;
+    Localidad: string;
+    Calle: string;
+    Numero: string;
+    EntreCalle: string;
 }
 
 export const Cliente = model<ICliente>('Cliente', clienteSchema);

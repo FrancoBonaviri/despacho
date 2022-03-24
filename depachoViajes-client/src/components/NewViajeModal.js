@@ -297,6 +297,7 @@ export function NewViajeModal() {
     }
     apiService.getLastDataClienteByCode(newValue)
     .then( res => {
+    console.log("🚀 ~ file: NewViajeModal.js ~ line 300 ~ autoCompleteByCode ~ res", res)
       setFormValues({
         ...formValues,
         localidad: res.data.Viaje.Localidad,

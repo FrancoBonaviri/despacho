@@ -94,7 +94,7 @@ var clienteController = /** @class */ (function () {
         });
     }); };
     clienteController.getLastDataByCode = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-        var code, cliente, viaje, error_3;
+        var code, cliente, viaje_2, viaje, error_3;
         return __generator(_a, function (_b) {
             switch (_b.label) {
                 case 0:
@@ -105,6 +105,19 @@ var clienteController = /** @class */ (function () {
                     cliente = _b.sent();
                     if (!cliente) {
                         throw new Error('No se encontro el cliente');
+                    }
+                    if (cliente.Numero) {
+                        viaje_2 = {
+                            Calle: cliente.Calle,
+                            EntreCalle: cliente.EntreCalle,
+                            Localidad: cliente.Localidad,
+                            Numero: cliente.Numero,
+                        };
+                        return [2 /*return*/, res.json({
+                                ok: true,
+                                Cliente: cliente,
+                                Viaje: viaje_2
+                            })];
                     }
                     return [4 /*yield*/, viaje_1.Viaje.findOne({ CodigoCliente: code }).sort({ FechaPedido: -1 }).exec()];
                 case 2:
@@ -203,18 +216,22 @@ var clienteController = /** @class */ (function () {
         });
     }); };
     clienteController.create = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-        var _b, Nombre, Codigo, NumeroTelefono, cliente, clienteDb, error_7;
+        var _b, Nombre, Codigo, NumeroTelefono, Localidad, Calle, Numero, EntreCalle, cliente, clienteDb, error_7;
         return __generator(_a, function (_c) {
             switch (_c.label) {
                 case 0:
-                    _b = req.body, Nombre = _b.Nombre, Codigo = _b.Codigo, NumeroTelefono = _b.NumeroTelefono;
+                    _b = req.body, Nombre = _b.Nombre, Codigo = _b.Codigo, NumeroTelefono = _b.NumeroTelefono, Localidad = _b.Localidad, Calle = _b.Calle, Numero = _b.Numero, EntreCalle = _b.EntreCalle;
                     _c.label = 1;
                 case 1:
                     _c.trys.push([1, 3, , 4]);
                     cliente = {
                         Nombre: Nombre,
                         Codigo: Codigo,
-                        NumeroTelefono: NumeroTelefono
+                        NumeroTelefono: NumeroTelefono,
+                        Localidad: Localidad,
+                        Calle: Calle,
+                        Numero: Numero,
+                        EntreCalle: EntreCalle
                     };
                     return [4 /*yield*/, Cliente_1.Cliente.create(cliente)];
                 case 2:
@@ -234,18 +251,22 @@ var clienteController = /** @class */ (function () {
         });
     }); };
     clienteController.update = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-        var codigo, _b, Nombre, NumeroTelefono, cliente, clienteDb, error_8;
+        var codigo, _b, Nombre, NumeroTelefono, Numero, Localidad, Calle, EntreCalle, cliente, clienteDb, error_8;
         return __generator(_a, function (_c) {
             switch (_c.label) {
                 case 0:
                     codigo = req.params.codigo;
-                    _b = req.body, Nombre = _b.Nombre, NumeroTelefono = _b.NumeroTelefono;
+                    _b = req.body, Nombre = _b.Nombre, NumeroTelefono = _b.NumeroTelefono, Numero = _b.Numero, Localidad = _b.Localidad, Calle = _b.Calle, EntreCalle = _b.EntreCalle;
                     _c.label = 1;
                 case 1:
                     _c.trys.push([1, 3, , 4]);
                     cliente = {
                         Nombre: Nombre,
-                        NumeroTelefono: NumeroTelefono
+                        NumeroTelefono: NumeroTelefono,
+                        Numero: Numero,
+                        Localidad: Localidad,
+                        Calle: Calle,
+                        EntreCalle: EntreCalle
                     };
                     return [4 /*yield*/, Cliente_1.Cliente.findOneAndUpdate({ Codigo: codigo }, cliente, { new: true })];
                 case 2:
@@ -259,6 +280,32 @@ var clienteController = /** @class */ (function () {
                     return [2 /*return*/, res.json({
                             ok: false,
                             err: error_8.message
+                        })];
+                case 4: return [2 /*return*/];
+            }
+        });
+    }); };
+    clienteController.delete = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+        var id, error_9;
+        return __generator(_a, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    id = req.params.id;
+                    _b.label = 1;
+                case 1:
+                    _b.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, Cliente_1.Cliente.findByIdAndDelete(id)];
+                case 2:
+                    _b.sent();
+                    return [2 /*return*/, res.json({
+                            ok: true,
+                            msg: 'Cliente eliminado'
+                        })];
+                case 3:
+                    error_9 = _b.sent();
+                    return [2 /*return*/, res.json({
+                            ok: false,
+                            err: error_9.message
                         })];
                 case 4: return [2 /*return*/];
             }

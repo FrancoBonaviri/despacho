@@ -5,6 +5,7 @@ export const OpenModalCliente = ()  => ({
     type: types.OpenModalCliente
 })
 
+
 export const OpenModalChofer = ()  => ({
     type: types.OpenModalChofer
 })

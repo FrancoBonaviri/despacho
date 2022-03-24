@@ -22,6 +22,12 @@ export const types = {
     CloseModalViaje: "[UI] CLOSE MODAL VIAJE",
     CloseModalDisco: "[UI] CLOSE MODAL DISCO",
     CloseModalCalculadora: '[UI] CLOSE MODAL CALCULADORA',
-    UpdateTables: "[UI] UPDATE TABLES"
+    UpdateTables: "[UI] UPDATE TABLES",
+
+
+
+    StartUpdateCliente: '[CLIENTE] Start UpdateCliente',
+    FinishUpdateCliente: '[CLIENTE] Finish UpdateCliente'
+
 
 }

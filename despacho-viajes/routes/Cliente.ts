@@ -26,5 +26,7 @@ clienteRouter.post('/',[
 ] ,clienteController.create);
 
 clienteRouter.put('/:codigo', clienteController.update)
+clienteRouter.delete('/:id', clienteController.delete)
+
 
 export default clienteRouter;

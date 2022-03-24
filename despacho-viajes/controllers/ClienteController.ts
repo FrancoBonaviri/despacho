@@ -61,6 +61,20 @@ class clienteController {
             if( !cliente ){
                 throw new Error('No se encontro el cliente')
             }
+            if( cliente.Numero ) {
+                const viaje = {
+                    Calle: cliente.Calle,
+                    EntreCalle: cliente.EntreCalle,
+                    Localidad: cliente.Localidad,
+                    Numero: cliente.Numero,
+
+                }
+                return res.json({
+                    ok: true,
+                    Cliente: cliente,
+                    Viaje: viaje
+                });
+            }
             const viaje = await Viaje.findOne({ CodigoCliente: code }).sort({FechaPedido: -1}).exec();
 
             return res.json({
@@ -149,13 +163,13 @@ class clienteController {
 
     static create = async ( req: Request, res: Response ) => {
 
-        const { Nombre, Codigo, NumeroTelefono } = req.body;
+        const { Nombre, Codigo, NumeroTelefono, Localidad, Calle, Numero, EntreCalle } = req.body;
 
 
         try {
             
             let cliente = {
-                Nombre, Codigo, NumeroTelefono
+                Nombre, Codigo, NumeroTelefono, Localidad, Calle, Numero, EntreCalle
             }
 
             const clienteDb = await Cliente.create(cliente);
@@ -178,13 +192,13 @@ class clienteController {
     static update = async ( req: Request, res: Response ) => {
         
         let codigo = req.params.codigo;
-        const { Nombre, NumeroTelefono } = req.body;
+        const { Nombre, NumeroTelefono, Numero, Localidad, Calle, EntreCalle } = req.body;
 
 
         try {
             
             let cliente = {
-                Nombre, NumeroTelefono
+                Nombre, NumeroTelefono, Numero, Localidad, Calle, EntreCalle
             }
 
             const clienteDb = await Cliente.findOneAndUpdate({ Codigo: codigo }, cliente, { new: true });
@@ -205,6 +219,30 @@ class clienteController {
 
     } 
 
+
+
+    static delete = async ( req: Request, res: Response ) => {
+        
+        let id = req.params.id;
+
+        try {
+            
+            await Cliente.findByIdAndDelete(id);
+
+
+            return res.json({
+                ok: true,
+                msg: 'Cliente eliminado'
+            });
+
+        } catch (error) {
+            return res.json({
+                ok: false,
+                err: error.message
+            });
+        }
+
+    } 
 }
 
 export default clienteController;

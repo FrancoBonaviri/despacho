@@ -25,7 +25,23 @@ var clienteSchema = new mongoose_1.Schema({
     NumeroTelefono: {
         type: String,
         required: [true]
-    }
+    },
+    Localidad: {
+        type: String,
+        required: [true]
+    },
+    Calle: {
+        type: String,
+        required: [true]
+    },
+    Numero: {
+        type: String,
+        required: [true]
+    },
+    EntreCalle: {
+        type: String,
+        required: [true]
+    },
 });
 clienteSchema.method('toJSON', function () {
     var _a = this._doc, __v = _a.__v, data = __rest(_a, ["__v"]);

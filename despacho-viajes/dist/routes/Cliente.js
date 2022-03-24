@@ -19,4 +19,5 @@ clienteRouter.post('/', [
     middleware_1.BodyValidator
 ], ClienteController_1.default.create);
 clienteRouter.put('/:codigo', ClienteController_1.default.update);
+clienteRouter.delete('/:id', ClienteController_1.default.delete);
 exports.default = clienteRouter;

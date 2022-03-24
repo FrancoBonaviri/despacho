@@ -105,7 +105,7 @@ class ApiService {
 
     getAllDiscos = async () => {
         const res = await axios.get(this.URL+ '/disco',{} )
-        if( !res.data.ok ) {
+        if( !res.data.ok ) { 
             throw new Error(res.data.err)
         }
         return res;
@@ -133,15 +133,25 @@ class ApiService {
 
 
     
-    createCliente = async (  Nombre, Codigo, NumeroTelefono ) => {
-        const res = await axios.post(this.URL+ '/cliente'  , { Nombre, Codigo, NumeroTelefono} )
+    createCliente = async (  Nombre, Codigo, NumeroTelefono, Localidad, Calle, Numero, EntreCalle ) => {
+        console.log('Entro create')
+        const res = await axios.post(this.URL+ '/cliente'  , { Nombre, Codigo, NumeroTelefono, Localidad, Calle, Numero, EntreCalle} )
         console.log(res);
         if( !res.data.ok ) {
             throw new Error(res.data.err)
         }
         return res;
     }
-
+ 
+    updateCliente = async (  Nombre, Codigo, NumeroTelefono, Localidad, Calle, Numero, EntreCalle ) => {
+        console.log('Entro update')
+        const res = await axios.put(this.URL+ '/cliente/' + Codigo , { Nombre, Codigo, NumeroTelefono, Localidad, Calle, Numero, EntreCalle} )
+        console.log(res);
+        if( !res.data.ok ) {
+            throw new Error(res.data.err)
+        }
+        return res;
+    }
 
 
     getAllClientes = async( ) => {
@@ -250,6 +260,21 @@ class ApiService {
         return res;
     }
 
+    deleteCliente = async (clienteId) => { 
+        const res = await axios.delete(this.URL+ '/cliente/' + clienteId)
+        if( !res.data.ok ) {
+            throw new Error(res.data.msg)
+        }
+        return res;
+    }
+
+    getClienteByCode = async ( code ) => {
+        const res = await axios.get(this.URL+ '/cliente/' + code)
+        if( !res.data.ok ) {
+            throw new Error(res.data.msg)
+        }
+        return res;
+    }
 
     uploadFileChofer = async ( file, id) => {
         const formData = new FormData()
